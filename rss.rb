@@ -1,5 +1,5 @@
 require 'sinatra'
 
 get '/' do
-  "#{['Hello', 'ayyy'][rand(2)]} world"
+  erb :hello_world
 end
