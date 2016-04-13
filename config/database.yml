@@ -1,0 +1,6 @@
+development:
+  adapter: postgresql
+  database: rss_development
+  host: localhost
+  username: tuffylock
+  password: root
