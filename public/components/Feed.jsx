@@ -31,7 +31,7 @@ module.exports = React.createClass({
     return (
       <div>
         <h1>The Onion</h1>
-        <ul>{articles}</ul>
+        <ul className="feed">{articles}</ul>
       </div>
     );
   }

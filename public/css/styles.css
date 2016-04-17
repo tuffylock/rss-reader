@@ -1,0 +1,70 @@
+*{margin: 0; padding: 0;}
+
+a, a:link, a:visited, a:hover, a:active {
+  color: inherit;
+  text-decoration: inherit;
+  font-weight: inherit;
+}
+
+h1 {
+  position: fixed;
+  margin: 25px;
+}
+
+.feed {
+  list-style: none;
+  width: 90vw;
+  max-width: 565px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.article {
+  text-align: center;
+  margin: 25px;
+}
+
+.headline-wrapper {
+  display: inline-block;
+  width: 565px;
+  margin: 20px 0px -5px;
+}
+
+h2 {
+  float: left;
+  display: inline-block;
+  max-width: 500px;
+}
+
+.favorite {
+  margin: 10px;
+  float: right;
+  display: inline-block;
+}
+
+.image-wrapper {
+  float: left;
+  position: relative;
+  background-color: red;
+  width: 565px;
+  height: 313px;
+}
+
+.excerpt {
+  background-color: black;
+  color: white;
+  opacity: 0.7;
+  padding: 10px;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  max-height: 50px;
+  width: 545px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: max-height .6s ease-out;
+}
+
+.image-wrapper:hover > .excerpt {
+  max-height: 100%;
+}
