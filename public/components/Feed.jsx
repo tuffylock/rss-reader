@@ -1,26 +1,27 @@
 var React = require('react');
 
+var ApiUtil = require('../util/ApiUtil.js')
+var RSSStore = require('../stores/RSSStore.js')
+
 var Article = require('./Article.jsx');
 
 module.exports = React.createClass({
   getInitialState: function () {
-    return { articles: [] }
+    return { articles: RSSStore.all() }
   },
 
   componentDidMount: function () {
-    var that = this;
-    $.ajax({
-      url: '/rss-feed.json',
-      success: function (feed) {
-        that.updateArticles(feed)
-      }
-    });
+    this.rssListener = RSSStore.addListener(this.rssChanged)
+    ApiUtil.fetchRSS();
   },
 
-  updateArticles: function (feed) {
-    console.log(feed);
-    articles = feed.item;
-    this.setState({ articles: feed.item });
+  componentWillUnmount: function () {
+    this.rssListener.remove();
+  },
+
+  rssChanged: function () {
+    articles = RSSStore.all();
+    this.setState({ articles: articles });
   },
 
   render: function () {

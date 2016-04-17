@@ -4,6 +4,8 @@ require 'rss'
 require 'sinatra'
 require 'sinatra/activerecord'
 
+require './models/favorite'
+
 rss_url = "http://www.theonion.com/feeds/rss"
 
 def fetch_rss(url)
@@ -39,4 +41,13 @@ end
 get '/rss-feed.json' do
   content_type :json
   fetch_rss(rss_url).channel.to_json
+end
+
+get '/favorites' do
+  content_type :json
+  Favorite.all.to_json
+end
+
+post '/favorites/add' do
+  
 end
