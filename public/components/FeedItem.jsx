@@ -1,5 +1,6 @@
 var React = require('react')
 
+var FavoriteActions = require('../actions/FavoriteActions.js');
 
 module.exports = React.createClass({
   getInitialState: function () {
@@ -7,6 +8,7 @@ module.exports = React.createClass({
   },
 
   toggleFavorite: function () {
+    FavoriteActions.addFavorite(this.props.article);
     this.setState({ favorite: !this.state.favorite });
   },
 
@@ -46,14 +48,14 @@ module.exports = React.createClass({
     var favorite = this.state.favorite ? "★" : "☆";
 
     return(
-      <li className="article">
+      <li className="feed-item">
         <div className="headline-wrapper">
-          <h2 className="article-title"><a href={link}>{title}</a></h2>
+          <h3 className="article-title"><a href={link}>{title}</a></h3>
 
-          <h2
+          <h3
             className="favorite"
             onClick={this.toggleFavorite}
-          >{favorite}</h2>
+          >{favorite}</h3>
         </div>
 
         <a href={link} className="image-wrapper" style={image}>

@@ -1,7 +1,5 @@
 var Store = require('flux/utils').Store;
-
 var Dispatcher = require('../dispatcher/Dispatcher.js');
-
 var RSSStore = new Store(Dispatcher);
 
 var _rss = [];

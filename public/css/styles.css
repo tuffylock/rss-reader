@@ -11,15 +11,34 @@ h1 {
   margin: 25px;
 }
 
-.feed {
-  list-style: none;
-  width: 90vw;
-  max-width: 565px;
-  margin-left: auto;
-  margin-right: auto;
+.favorites {
+  left: 0;
+  height: 100%;
+  background: pink;
+  width: 30%;
+  position: fixed;
+  overflow: scroll;
 }
 
-.article {
+.favorites-item {
+  margin: 10px;
+  text-decoration: underline;
+}
+
+h2 {
+  text-align: center;
+}
+
+.feed {
+  list-style: none;
+  width: 60vw;
+  max-width: 565px;
+  max-width: 60%;
+  float: right;
+  margin: 5%;
+}
+
+.feed-item {
   text-align: center;
   margin: 25px;
 }
@@ -30,7 +49,7 @@ h1 {
   margin: 20px 0px -5px;
 }
 
-h2 {
+h3 {
   float: left;
   display: inline-block;
   max-width: 500px;
@@ -40,6 +59,7 @@ h2 {
   margin: 10px;
   float: right;
   display: inline-block;
+  cursor: pointer;
 }
 
 .image-wrapper {
