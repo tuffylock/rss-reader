@@ -1,11 +1,5 @@
 *{margin: 0; padding: 0;}
 
-a, a:link, a:visited, a:hover, a:active {
-  color: inherit;
-  text-decoration: inherit;
-  font-weight: inherit;
-}
-
 h1 {
   position: fixed;
   margin: 25px;
@@ -22,7 +16,19 @@ h1 {
 
 .favorites-item {
   margin: 10px;
-  text-decoration: underline;
+  list-style: none;
+}
+
+.remove-favorite {
+  border: solid 1px black;
+  border-radius: 100%;
+  cursor: pointer;
+  width: 15px;
+  height: 15px;
+}
+
+.favorites-link {
+  color: inherit;
 }
 
 h2 {
@@ -49,7 +55,9 @@ h2 {
   margin: 20px 0px -5px;
 }
 
-h3 {
+h3 a {
+  color: inherit;
+  text-decoration: inherit;
   float: left;
   display: inline-block;
   max-width: 500px;

@@ -1,5 +1,6 @@
 React = require('react');
 
+ClientActions = require('../actions/ClientActions.js');
 FavoriteStore = require('../stores/FavoriteStore.js');
 
 FavoritesItem = require('./FavoritesItem.jsx');
@@ -11,6 +12,7 @@ module.exports = React.createClass({
 
   componentDidMount: function () {
     this.favoritesListener = FavoriteStore.addListener(this._favsChanged);
+    ClientActions.fetchFavorites();
   },
 
   componentWillUnmount: function () {
@@ -25,7 +27,7 @@ module.exports = React.createClass({
   render: function () {
     var favorites = this.state.favorites.map(function (article, index) {
       return <FavoritesItem key={index} article={article} />;
-    });
+    }).reverse();
 
     return (
       <div className="favorites">

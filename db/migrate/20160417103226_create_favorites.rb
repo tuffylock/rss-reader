@@ -1,7 +1,7 @@
 class CreateFavorites < ActiveRecord::Migration
   def change
     create_table :favorites do |t|
-      t.date :publish_date, null: false
+      t.date :pubdate, null: false
       t.string :title, null: false
       t.string :url, null: false
       t.string :img

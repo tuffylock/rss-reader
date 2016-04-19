@@ -1,6 +1,6 @@
 var React = require('react');
 
-var ApiUtil = require('../util/ApiUtil.js')
+var ClientActions = require('../actions/ClientActions.js')
 var RSSStore = require('../stores/RSSStore.js')
 
 var FeedItem = require('./FeedItem.jsx');
@@ -13,7 +13,7 @@ module.exports = React.createClass({
 
   componentDidMount: function () {
     this.rssListener = RSSStore.addListener(this._rssChanged);
-    ApiUtil.fetchRSS();
+    ClientActions.fetchRSS();
   },
 
   componentWillUnmount: function () {
@@ -30,9 +30,9 @@ module.exports = React.createClass({
     var lastPub;
 
     this.state.articles.forEach(function (article, index) {
-      if (article.pubDate !== lastPub) {
-        lastPub = article.pubDate;
-        articles.push(<li key={article.pubDate}>{article.pubDate}</li>);
+      if (article.pubdate !== lastPub) {
+        lastPub = article.pubdate;
+        articles.push(<li key={article.pubdate}>{article.pubdate}</li>);
       }
       articles.push(<FeedItem key={index} article={article} />);
     });

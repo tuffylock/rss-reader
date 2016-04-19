@@ -4,8 +4,8 @@ var FavoriteStore = new Store(Dispatcher);
 
 var _favorites = [];
 
-function addFavorite(article) {
-  _favorites.push(article);
+function resetFavorites(favorites) {
+  _favorites = favorites;
 }
 
 FavoriteStore.all = function () {
@@ -14,8 +14,8 @@ FavoriteStore.all = function () {
 
 FavoriteStore.__onDispatch = function (payload) {
   switch(payload.actionType) {
-  case "ADD_FAVORITE":
-    addFavorite(payload.article);
+  case "FAVORITES_RECEIVED":
+    resetFavorites(payload.favorites);
     break;
   }
 

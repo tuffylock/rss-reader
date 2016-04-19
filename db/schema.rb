@@ -17,14 +17,14 @@ ActiveRecord::Schema.define(version: 20160417103226) do
   enable_extension "plpgsql"
 
   create_table "favorites", force: :cascade do |t|
-    t.date     "publish_date", null: false
-    t.string   "title",        null: false
-    t.string   "url",          null: false
+    t.date     "pubdate",     null: false
+    t.string   "title",       null: false
+    t.string   "url",         null: false
     t.string   "img"
     t.text     "description"
-    t.string   "guid",         null: false
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.string   "guid",        null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   add_index "favorites", ["guid"], name: "index_favorites_on_guid", unique: true, using: :btree

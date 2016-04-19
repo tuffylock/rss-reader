@@ -9,3 +9,5 @@ gem 'pg'
 gem 'rake'
 
 gem 'json'
+
+gem 'pry-byebug'

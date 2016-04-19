@@ -6,5 +6,12 @@ module.exports = {
       actionType: "RSS_RECEIVED",
       rss: rss
     });
+  },
+
+  receiveFavorites: function (favorites) {
+    Dispatcher.dispatch({
+      actionType: "FAVORITES_RECEIVED",
+      favorites: favorites
+    });
   }
 };

@@ -1,70 +1,63 @@
 var React = require('react')
 
-var FavoriteActions = require('../actions/FavoriteActions.js');
+var ClientActions = require('../actions/ClientActions.js');
+var FavoriteStore = require('../stores/FavoriteStore.js');
 
 module.exports = React.createClass({
   getInitialState: function () {
     return { favorite: false };
   },
 
+  componentDidMount: function () {
+    this.checkFavorite();
+  },
+
+  checkFavorite: function () {
+    favorites = FavoriteStore.all();
+
+    for (var i = favorites.length - 1; i >= 0; i--) {
+      if (favorites[i].guid === this.props.article.guid) {
+        this.setState({ favorite: true });
+      }
+    }
+  },
+
   toggleFavorite: function () {
-    FavoriteActions.addFavorite(this.props.article);
+    if (this.state.favorite) {
+      ClientActions.removeFavorite(this.props.article);
+    } else {
+      ClientActions.addFavorite(this.props.article);
+    }
     this.setState({ favorite: !this.state.favorite });
-  },
-
-  extractImage: function () {
-    var description = this.props.article.description;
-    var imgRegexp = /<img src=(\S+)/;
-
-    var image = imgRegexp.exec(description);
-
-    if (image) {
-      return image[1];
-    } else {
-      return "#";
-    }
-  },
-
-  extractExcerpt: function () {
-    var description = this.props.article.description;
-    var excerptRegexp = /<p>.+<\/p>/;
-
-    var excerpt = excerptRegexp.exec(description);
-
-    if (excerpt) {
-      return excerpt[0] + "<br><p><b>Read more...</b></p>";
-    } else {
-      return "<p>Read more...</p>";
-    }
   },
 
   render: function () {
     var title = this.props.article.title;
-    var link = this.props.article.link;
-    var excerpt = this.extractExcerpt();
+    var url = this.props.article.url;
+    var description = this.props.article.description;
 
-    var image = { backgroundImage: 'url(' + this.extractImage() + ')' };
+    var image = { backgroundImage: 'url(' + this.props.article.img + ')' };
 
     var favorite = this.state.favorite ? "★" : "☆";
 
     return(
       <li className="feed-item">
         <div className="headline-wrapper">
-          <h3 className="article-title"><a href={link}>{title}</a></h3>
+          <h3 className="article-title"><a href={url}>{title}</a></h3>
 
           <h3
             className="favorite"
             onClick={this.toggleFavorite}
+            title="Favorite"
           >{favorite}</h3>
         </div>
 
-        <a href={link} className="image-wrapper" style={image}>
+        <a href={url} className="image-wrapper" style={image}>
           <div
             className="excerpt"
-            dangerouslySetInnerHTML={ { __html: excerpt } }
+            dangerouslySetInnerHTML={ { __html: description } }
           />
         </a>
-        <hr/>
       </li>
     );
   }
