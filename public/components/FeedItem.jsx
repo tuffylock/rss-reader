@@ -43,8 +43,10 @@ module.exports = React.createClass({
     return(
       <li className="feed-item">
         <div className="headline-wrapper">
-          <h3 className="article-title"><a href={url}>{title}</a></h3>
-
+          <div></div>
+          <h3 className="article-title">
+            <a href={url} title={url}>{title}</a>  
+          </h3>
           <h3
             className="favorite"
             onClick={this.toggleFavorite}
@@ -55,6 +57,7 @@ module.exports = React.createClass({
         <a href={url} className="image-wrapper" style={image}>
           <div
             className="excerpt"
+            title="Read More"
             dangerouslySetInnerHTML={ { __html: description } }
           />
         </a>
